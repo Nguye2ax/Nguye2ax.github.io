@@ -63,6 +63,53 @@
             text-align: center;
             color: #666;
         }
+
+        .clock-face {
+            width: 220px;
+            height: 220px;
+            border: 8px solid #1f2937;
+            border-radius: 50%;
+            position: relative;
+            margin: 20px auto;
+            background: white;
+        }
+        
+        .hand {
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: #1f2937;
+            top: 50%;
+            left: 50%;
+            transform-origin: left center;
+            transform: rotate(90deg);
+            border-radius: 4px;
+        }
+        
+        .hour-hand {
+            width: 35%;
+            height: 6px;
+        }
+        
+        .minute-hand {
+            width: 45%;
+        }
+        
+        .second-hand {
+            height: 2px;
+            background: #dc3545;
+        }
+        
+        .clock-center {
+            width: 14px;
+            height: 14px;
+            background: #1f2937;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
