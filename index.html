@@ -28,7 +28,7 @@
         }
 
         .hero {
-            background: linear-gradiehttps://nguye2ax.github.io/?v=100nt(135deg, #1f2937, #0f172a);
+            background: linear-gradient(135deg, #1f2937, #0f172a);
             color: white;
             padding: 50px 20px;
             border-radius: 0 0 25px 25px;
@@ -119,6 +119,9 @@
                 <li>Teamwork and leadership</li>
                 <li>Linux and Ubuntu basics</li>
                 <li>HTML, CSS, and JavaScript basics</li>
+                <li>Bootstrap front-end framework</li>
+                <li>jQuery and Vue.js basics</li>
+                <li>Ajax, fetch(), and API integration</li>
                 <li>PHP basics</li>
                 <li>Web application security basics, including Cross-Site Scripting defense</li>
             </ul>
@@ -183,17 +186,13 @@
             <img id="dogImage" class="api-img" src="" alt="Random dog from public API">
         </div>
 
-    <div class="section-box">
-        <h2>Page Tracker</h2>
-        <p>
-            This page includes a simple visitor tracker for the project requirement.
-        </p>
-    
-        <a href="https://info.flagcounter.com/">
-            <img src="https://s01.flagcounter.com/mini/Me9/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/"
-                 alt="Flag Counter" border="0">
-        </a>
-    </div>
+        <div class="section-box">
+            <h2>Page Tracker</h2>
+            <p>
+                This project includes a simple local page tracker using JavaScript localStorage.
+            </p>
+            <p id="pageTracker">Page tracker loading...</p>
+        </div>
 
     </div>
 
@@ -249,6 +248,20 @@
             setCookie("lastVisit", now, 30);
         }
 
+        function updatePageTracker() {
+            let visits = localStorage.getItem("pageVisits");
+
+            if (visits === null) {
+                visits = 0;
+            }
+
+            visits = parseInt(visits) + 1;
+            localStorage.setItem("pageVisits", visits);
+
+            document.getElementById("pageTracker").textContent =
+                "You have visited this page " + visits + " time(s) on this browser.";
+        }
+
         function getJoke() {
             $.get("https://v2.jokeapi.dev/joke/Any?type=single", function(result) {
                 if (result && result.joke) {
@@ -292,6 +305,8 @@
 
         window.onload = function() {
             checkVisit();
+
+            updatePageTracker();
 
             updateClock();
             setInterval(updateClock, 1000);
